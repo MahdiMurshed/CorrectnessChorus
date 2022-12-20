@@ -7,14 +7,14 @@ const useStyles = createStyles((theme, _params, getRef) => {
       //   positio n: 'fixed',
       backgroundColor: theme.fn.variant({
         variant: 'filled',
-        color: theme.primaryColor,
+
+        color: 'dark',
       }).background,
     },
 
     version: {
       backgroundColor: theme.fn.lighten(
-        theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
-          .background!,
+        theme.fn.variant({ variant: 'filled', color: 'pink' }).background!,
         0.1
       ),
       color: theme.white,
@@ -25,8 +25,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
       paddingBottom: theme.spacing.md,
       marginBottom: theme.spacing.md * 1.5,
       borderBottom: `1px solid ${theme.fn.lighten(
-        theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
-          .background!,
+        theme.fn.variant({ variant: 'filled', color: 'pink' }).background!,
         0.1
       )}`,
     },
@@ -35,8 +34,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
       paddingTop: theme.spacing.md,
       marginTop: theme.spacing.md,
       borderTop: `1px solid ${theme.fn.lighten(
-        theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
-          .background!,
+        theme.fn.variant({ variant: 'filled', color: 'pink' }).background!,
         0.1
       )}`,
     },
@@ -54,10 +52,11 @@ const useStyles = createStyles((theme, _params, getRef) => {
 
       '&:hover': {
         backgroundColor: theme.fn.lighten(
-          theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
-            .background!,
+          theme.fn.variant({ variant: 'filled', color: 'pink' }).background!,
           0.1
         ),
+        boxShadow: theme.shadows.md,
+        transform: 'scale(1.02)',
       },
     },
 

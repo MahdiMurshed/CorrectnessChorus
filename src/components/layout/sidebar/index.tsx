@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Navbar, Group, Code } from '@mantine/core';
+import { Navbar, Group, Code, Text } from '@mantine/core';
 import { IconLogout } from '@tabler/icons';
 import useStyles from './styles';
 import { data } from './data';
@@ -34,7 +34,9 @@ export default function SideBar() {
     >
       <Navbar.Section grow>
         <Group className={classes.header} position="apart">
-          CorrectChorus
+          <Text size="xl" color="white">
+            CorrectnessChorus
+          </Text>
           <Code className={classes.version}>v1.0.0</Code>
         </Group>
         {links}
