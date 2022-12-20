@@ -23,6 +23,7 @@ export default function Card({
 
   const handleNewDoc = (e: any) => {
     e.preventDefault();
+    //TODO: Get Document ID
     const id = uuid();
     router.push(`/docs/new/${id}`);
   };
@@ -38,12 +39,7 @@ export default function Card({
       className={classes.card}
       onClick={first ? handleNewDoc : handleClick}
     >
-      <ThemeIcon
-        size="xl"
-        radius="md"
-        variant="gradient"
-        gradient={{ deg: 0, from: 'pink', to: 'orange' }}
-      >
+      <ThemeIcon size="xl" radius="md" variant="filled" color="pink">
         {first ? (
           <IconPlus size={28} stroke={1.5} />
         ) : (

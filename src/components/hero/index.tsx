@@ -38,7 +38,7 @@ export function HeroBullets() {
               spacing="sm"
               size="xl"
               icon={
-                <ThemeIcon size={30} radius="xl">
+                <ThemeIcon size={30} radius="xl" color="pink">
                   <IconCheck size={18} stroke={2.5} />
                 </ThemeIcon>
               }
@@ -62,6 +62,7 @@ export function HeroBullets() {
               <Button
                 radius="xl"
                 size="xl"
+                color="pink"
                 className={classes.control}
                 onClick={(e) => {
                   e.preventDefault();

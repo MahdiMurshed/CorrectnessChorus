@@ -7,9 +7,14 @@ const useStyles = createStyles((theme, _params, getRef) => {
       //   positio n: 'fixed',
       backgroundColor: theme.fn.variant({
         variant: 'filled',
-
         color: 'dark',
       }).background,
+    },
+    logo: {
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      letterSpacing: '2px',
+      cursor: 'pointer',
     },
 
     version: {
@@ -69,13 +74,11 @@ const useStyles = createStyles((theme, _params, getRef) => {
 
     linkActive: {
       '&, &:hover': {
-        backgroundColor: theme.fn.lighten(
-          theme.fn.variant({ variant: 'filled', color: theme.primaryColor })
-            .background!,
-          0.15
-        ),
+        color: 'pink',
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
         [`& .${icon}`]: {
-          opacity: 0.9,
+          color: 'pink',
         },
       },
     },

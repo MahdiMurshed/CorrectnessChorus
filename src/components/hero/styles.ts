@@ -49,7 +49,7 @@ const useStyles = createStyles((theme) => ({
     position: 'relative',
     backgroundColor: theme.fn.variant({
       variant: 'light',
-      color: theme.primaryColor,
+      color: 'pink',
     }).background,
     borderRadius: theme.radius.sm,
     padding: '4px 12px',
