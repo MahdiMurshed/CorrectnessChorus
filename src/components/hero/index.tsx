@@ -66,7 +66,7 @@ export function HeroBullets() {
                 className={classes.control}
                 onClick={(e) => {
                   e.preventDefault();
-                  router.push(`/sign-in`);
+                  router.push(`/docs`);
                 }}
               >
                 Get started
