@@ -4,6 +4,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
   const icon = getRef('icon');
   return {
     navbar: {
+      //   positio n: 'fixed',
       backgroundColor: theme.fn.variant({
         variant: 'filled',
         color: theme.primaryColor,
@@ -45,7 +46,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
       display: 'flex',
       alignItems: 'center',
       textDecoration: 'none',
-      fontSize: theme.fontSizes.sm,
+      fontSize: theme.fontSizes.xl,
       color: theme.white,
       padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
       borderRadius: theme.radius.sm,

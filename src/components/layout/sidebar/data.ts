@@ -1,18 +1,6 @@
-import {
-  IconBellRinging,
-  IconFingerprint,
-  IconKey,
-  IconSettings,
-  Icon2fa,
-  IconDatabaseImport,
-  IconReceipt2,
-} from '@tabler/icons';
+import { IconHome2, IconUser, IconTrash } from '@tabler/icons';
 export const data = [
-  { link: '', label: 'Notifications', icon: IconBellRinging },
-  { link: '', label: 'Billing', icon: IconReceipt2 },
-  { link: '', label: 'Security', icon: IconFingerprint },
-  { link: '', label: 'SSH Keys', icon: IconKey },
-  { link: '', label: 'Databases', icon: IconDatabaseImport },
-  { link: '', label: 'Authentication', icon: Icon2fa },
-  { link: '', label: 'Other Settings', icon: IconSettings },
+  { link: '/docs', label: 'My docs', icon: IconHome2 },
+  { link: '/trash', label: 'Trash', icon: IconTrash },
+  { link: '/account', label: 'Account', icon: IconUser },
 ];
