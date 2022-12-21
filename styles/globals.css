@@ -105,3 +105,13 @@ a {
     color-scheme: dark;
   }
 }
+
+.mantine-4n64bf {
+  background-color: #fff;
+}
+
+.mantine-4n64bf:focus,
+.mantine-4n64bf:focus-within {
+  outline: none;
+  border-color: #fff;
+}
