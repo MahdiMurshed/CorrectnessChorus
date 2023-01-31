@@ -15,5 +15,6 @@ export default async function handler(
     temperature: 0,
   });
   console.log({ response });
+
   return res.status(200).json({ text: response.data.choices[0].text });
 }
