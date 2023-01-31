@@ -9,11 +9,10 @@ args = TTSettings(num_beams=5, min_length=1)
 @app.route('/members', methods = ['POST'])
 @cross_origin()
 def ReturnJSON():
-    test = request.args.get('test')
-    print(test)
-    result = happy_tt.generate_text("grammar: "+test, args=args)
+    text = request.args.get('text')
+    print(text)
+    result = happy_tt.generate_text("grammar: "+text, args=args)
     data = jsonify(result)
-    data.headers.add("Access-Control-Allow-Origin", "*")
     
     return data
 
