@@ -4,8 +4,18 @@ import React, { useState } from 'react';
 import axios from '@lib/axios';
 import { toast } from 'react-toastify';
 
+const fetching = async () => {
+  const testi: string = 'This sentences has has bads grammar.';
+  const response = await axios.post(
+    `http://127.0.0.1:5000/members?test=${testi}`
+  );
+  console.log({ response });
+  return response;
+};
+
 const NewDocument = () => {
   //complete the function which takes input from text area and sends it to the backend
+  fetching();
   const router = useRouter();
   const { id } = router.query;
   const [text, setText] = useState('');
