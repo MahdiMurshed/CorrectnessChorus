@@ -6,5 +6,9 @@
   "rules": {
     "no-unused-vars": [2, { "args": "after-used", "argsIgnorePattern": "^_" }],
     "react-hooks/exhaustive-deps": "error"
+  },
+  "env": {
+    // ...
+    "webextensions": true
   }
 }

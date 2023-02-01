@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Correctness Chorus",
+  "version": "1.0",
+  "description": "Add the reading time to Chrome Extension documentation articles",
+  "action": {
+    "default_title": "Click Me",
+    "default_popup": "pages/index.tsx"
+  },
+  "permissions": ["tabs"]
+}

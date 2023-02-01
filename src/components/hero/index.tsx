@@ -1,3 +1,5 @@
+import image from './image.svg';
+import useStyles from './styles';
 import {
   Image,
   Container,
@@ -9,13 +11,12 @@ import {
   ThemeIcon,
 } from '@mantine/core';
 import { IconCheck } from '@tabler/icons';
-import image from './image.svg';
-import { useRouter } from 'next/router';
-import useStyles from './styles';
+
+// import { useRouter } from 'next/router';
 
 export function HeroBullets() {
   const { classes } = useStyles();
-  const router = useRouter();
+  // const router = useRouter();
   return (
     <div>
       <Container>
@@ -66,7 +67,14 @@ export function HeroBullets() {
                 className={classes.control}
                 onClick={(e) => {
                   e.preventDefault();
-                  router.push(`/docs`);
+                  chrome.tabs.query(
+                    { active: true, currentWindow: true },
+                    function (tabs) {
+                      var tab = tabs[0];
+                      chrome.tabs.update(tab.id, { url: '/docs/index.html' });
+                    }
+                  );
+                  // router.push(`/docs`);
                 }}
               >
                 Get started
