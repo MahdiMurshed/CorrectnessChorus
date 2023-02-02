@@ -1,0 +1,4 @@
+to activate venv -----------
+source venv/bin/activate
+to activate server ---------
+python3 /home/owishibooo/projects/CorrectnessChorus/pages/api/server.py

@@ -12,6 +12,7 @@
 
 # next.js
 /.next/
+/.plasmo/
 /out/
 
 # production

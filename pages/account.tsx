@@ -1,6 +1,6 @@
+import { NextPageWithLayout } from './_app';
 import LayOut from '@components/layout';
 import React from 'react';
-import { NextPageWithLayout } from './_app';
 
 const Account: NextPageWithLayout = () => {
   return <div>Account</div>;

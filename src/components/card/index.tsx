@@ -1,9 +1,9 @@
+import useStyles from './styles';
 import { Paper, Text, ThemeIcon } from '@mantine/core';
 import { IconColorSwatch, IconPlus } from '@tabler/icons';
-import useStyles from './styles';
-import uuid from 'react-uuid';
 import { useRouter } from 'next/router';
 import React from 'react';
+import uuid from 'react-uuid';
 
 interface CardGradientProps {
   first?: boolean;

@@ -1,18 +1,37 @@
-from flask import Flask
+import json
+from flask import Flask,jsonify,request
 from happytransformer import HappyTextToText, TTSettings
-
+from flask_cors import CORS, cross_origin
+app =   Flask(__name__)
+CORS(app)
 happy_tt = HappyTextToText("T5", "vennify/t5-base-grammar-correction")
-
 args = TTSettings(num_beams=5, min_length=1)
+@app.route('/members', methods = ['POST'])
+@cross_origin()
+def ReturnJSON():
+    text = request.args.get('text')
+    print(text)
+    result = happy_tt.generate_text("grammar: "+text, args=args)
+    data = jsonify(result)
+    
+    return data
 
-# Add the prefix "grammar: " before each input 
-result = happy_tt.generate_text("grammar: This sentences has has bads grammar.", args=args)
+from werkzeug.exceptions import HTTPException
 
-print(result.text) # This sentence has bad grammar.
-app = Flask(__name__)
-@app.route("/members") #route
-def members():
-    return {"result":[result]}
+@app.errorhandler(HTTPException)
+def handle_exception(e):
+    """Return JSON instead of HTML for HTTP errors."""
+    # start with the correct headers and status code from the error
+    response = e.get_response()
+    # replace the body with JSON
+    response.data = json.dumps({
+        "code": e.code,
+        "name": e.name,
+        "description": e.description,
+    })
+    response.content_type = "application/json"
+    return response
 
-if __name__ == "__main__":
+    
+if __name__=='__main__':
     app.run(debug=True)

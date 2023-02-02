@@ -1,5 +1,5 @@
-import React from 'react';
 import SideBar from './sidebar';
+import React from 'react';
 
 const LayOut = ({ children }: React.PropsWithChildren) => {
   return (
