@@ -4,7 +4,7 @@ import { Button, Text, Textarea } from '@mantine/core';
 import { Document } from '@prisma/client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
-import React, { useEffect, useReducer } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { initialState, reducer } from '~popup';
 

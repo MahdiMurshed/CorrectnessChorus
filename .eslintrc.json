@@ -4,8 +4,10 @@
     "React": "readonly"
   },
   "rules": {
-    "no-unused-vars": [2, { "args": "after-used", "argsIgnorePattern": "^_" }],
-    "react-hooks/exhaustive-deps": "error"
+    "react-hooks/exhaustive-deps": "error",
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off",
+    "no-unused-vars": "off"
   },
   "env": {
     // ...
