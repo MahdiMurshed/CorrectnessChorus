@@ -1,7 +1,7 @@
+import axios from '@lib/axios';
 import { Button, Text, Textarea } from '@mantine/core';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import axios from '@lib/axios';
 import { toast } from 'react-toastify';
 
 const NewDocument = () => {

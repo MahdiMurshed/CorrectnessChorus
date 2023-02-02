@@ -1,10 +1,10 @@
-import { useMemo } from 'react';
+import { data } from './data';
+import useStyles from './styles';
 import { Navbar, Group, Text } from '@mantine/core';
 import { IconLogout } from '@tabler/icons';
-import useStyles from './styles';
-import { data } from './data';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 
 export default function SideBar() {
   const { classes, cx } = useStyles();

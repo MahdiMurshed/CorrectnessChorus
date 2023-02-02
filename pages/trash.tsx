@@ -1,6 +1,6 @@
+import { NextPageWithLayout } from './_app';
 import LayOut from '@components/layout';
 import React, { ReactElement } from 'react';
-import { NextPageWithLayout } from './_app';
 
 const Trash: NextPageWithLayout = () => {
   return <div>Trash</div>;

@@ -1,4 +1,5 @@
 import { HeroBullets } from '@components/hero';
+
 //import axios from 'axios';
 
 // const fetching = async () => {
