@@ -25,6 +25,7 @@ const NewDocument = () => {
       }
     }
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ans]);
 
   const handleSubmit = async (e: any) => {
