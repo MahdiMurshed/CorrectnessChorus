@@ -11,12 +11,11 @@ import {
   ThemeIcon,
 } from '@mantine/core';
 import { IconCheck } from '@tabler/icons';
-
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 export function HeroBullets() {
   const { classes } = useStyles();
-  // const router = useRouter();
+  const router = useRouter();
   return (
     <div>
       <Container>
@@ -65,16 +64,16 @@ export function HeroBullets() {
                 size="xl"
                 color="pink"
                 className={classes.control}
-                onClick={(e) => {
-                  e.preventDefault();
-                  chrome.tabs.query(
-                    { active: true, currentWindow: true },
-                    function (tabs) {
-                      var tab = tabs[0];
-                      chrome.tabs.update(tab.id, { url: '/docs/index.html' });
-                    }
-                  );
-                  // router.push(`/docs`);
+                onClick={() => {
+                  // e.preventDefault();
+                  // chrome.tabs.query(
+                  //   { active: true, currentWindow: true },
+                  //   function (tabs) {
+                  //     var tab = tabs[0];
+                  //     chrome.tabs.update(tab.id, { url: '/docs/index.html' });
+                  //   }
+                  // );
+                  router.push(`/docs`);
                 }}
               >
                 Get started

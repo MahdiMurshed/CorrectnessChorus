@@ -1,6 +1,7 @@
 import useStyles from './styles';
 import { Paper, Text, ThemeIcon } from '@mantine/core';
 import { IconColorSwatch, IconPlus } from '@tabler/icons';
+import { useRouter } from 'next/router';
 import React from 'react';
 import uuid from 'react-uuid';
 
@@ -18,17 +19,17 @@ export default function Card({
   id,
 }: CardGradientProps) {
   const { classes } = useStyles();
-  //const router = useRouter();
+  const router = useRouter();
 
   const handleNewDoc = (e: any) => {
     e.preventDefault();
     //TODO: Get Document ID
     const id = uuid();
-    //router.push(`/docs/new/${id}`);
+    router.push(`/docs/new/${id}`);
   };
   const handleClick = (e: any) => {
     e.preventDefault();
-    //router.push(`/docs/${id}`);
+    router.push(`/docs/${id}`);
   };
 
   return (
