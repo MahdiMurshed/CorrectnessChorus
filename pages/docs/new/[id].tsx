@@ -1,8 +1,12 @@
 import axios from '@lib/axios';
 import { Button, Text, Textarea } from '@mantine/core';
 import { useRouter } from 'next/router';
+<<<<<<< HEAD
 import React, { useReducer } from 'react';
 import { useEffect } from 'react';
+=======
+import React, { useState } from 'react';
+>>>>>>> b71350a (build: changes)
 import { toast } from 'react-toastify';
 import { initialState, reducer } from '~popup';
 
