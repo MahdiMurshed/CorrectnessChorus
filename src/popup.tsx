@@ -41,6 +41,7 @@ function IndexPopup() {
       const url = `http://127.0.0.1:5000/members?text=${data}`;
       console.log({ url });
       const response = await axios.post(url);
+      console.log({ response });
       const answer = response.data.text;
       dispatch({ type: 'SET_ANS', payload: answer });
       toast.success('Got correction');
