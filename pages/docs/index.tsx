@@ -19,12 +19,12 @@ const Documents = () => {
         <CenteredLoader />
       ) : (
         <ContainerWrapper>
-          <Col sm={6} md={4} lg={3}>
+          <Col span={3}>
             <Card title="New" description="Create new document" first />
           </Col>
 
           {docs.map((doc: Document) => (
-            <Col key={doc.id} sm={6} md={4} lg={3}>
+            <Col key={doc.id} span={3}>
               <Card title={doc.text} description={doc.answer} id={doc.id} />
             </Col>
           ))}
@@ -42,7 +42,7 @@ export function CenteredLoader() {
       style={{
         position: 'absolute',
         top: '50%',
-        left: '60%',
+        left: '50%',
         transform: 'translate(-50%, -50%)',
       }}
     >
