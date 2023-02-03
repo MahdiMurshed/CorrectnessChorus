@@ -3,15 +3,12 @@ import axios from '@lib/axios';
 import { Button, Text, Textarea } from '@mantine/core';
 import { Document } from '@prisma/client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useRouter } from 'next/router';
-import React, { useReducer, useState, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { initialState, reducer } from '~popup';
 
 const NewDocument = () => {
   //complete the function which takes input from text area and sends it to the backend
-  const router = useRouter();
-  const { id } = router.query;
   const [state, dispatch] = useReducer(reducer, initialState);
   const { data, ans, loading } = state;
   const [session] = useSession();
@@ -20,7 +17,7 @@ const NewDocument = () => {
   const userId = session?.user?.id;
 
   useEffect(() => {
-    if (ans !== '') {
+    if (data !== '') {
       addTodoMutation.mutate({ data, ans, userId });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -87,9 +84,11 @@ const NewDocument = () => {
     e.preventDefault();
 
     try {
-      const url = `http://127.0.0.1:5000/members?text="${data}"`;
+      const url = `/grammar`;
       console.log({ url });
-      const response = await axios.post(url);
+      const response = await axios.post(url, {
+        message: data,
+      });
       const answer = response.data.text;
 
       dispatch({ type: 'SET_ANS', payload: answer });
@@ -121,7 +120,7 @@ const NewDocument = () => {
             marginRight: '1rem',
           }}
         >
-          <Text size="xl">{`Document ${id}`}</Text>
+          <Text size="xl">{`Document`}</Text>
         </div>
         <form onSubmit={handleSubmit}>
           <Textarea

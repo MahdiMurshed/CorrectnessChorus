@@ -6,18 +6,18 @@ import { IconCopy } from '@tabler/icons';
 import React, { useReducer } from 'react';
 import { toast } from 'react-toastify';
 
-type ACTIONTYPE =
+export type ACTIONTYPE =
   | { type: 'SET_DATA'; payload: string }
   | { type: 'SET_ANS'; payload: string }
   | { type: 'SET_LOADING'; payload: boolean };
 
-const initialState = {
+export const initialState = {
   data: '',
   ans: '',
   loading: false,
 };
 
-const reducer = (state: typeof initialState, action: ACTIONTYPE) => {
+export const reducer = (state: typeof initialState, action: ACTIONTYPE) => {
   switch (action.type) {
     case 'SET_DATA':
       return { ...state, data: action.payload };
@@ -38,9 +38,10 @@ function IndexPopup() {
   const handleSubmit = async () => {
     dispatch({ type: 'SET_LOADING', payload: true });
     try {
-      const url = `/members?text=${data}`;
+      const url = `http://127.0.0.1:5000/members?text=${data}`;
       console.log({ url });
       const response = await axios.post(url);
+      console.log({ response });
       const answer = response.data.text;
       dispatch({ type: 'SET_ANS', payload: answer });
       toast.success('Got correction');
@@ -65,7 +66,7 @@ function IndexPopup() {
       }}
     >
       <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>
-        Paste a sentence
+        Correctness-Chorus
       </h2>
       <Textarea
         style={{

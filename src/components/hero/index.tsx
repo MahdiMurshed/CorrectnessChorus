@@ -1,5 +1,6 @@
 import image from './image.svg';
 import useStyles from './styles';
+import { useSession } from '@hooks/useUser';
 import {
   Image,
   Container,
@@ -11,11 +12,14 @@ import {
   ThemeIcon,
 } from '@mantine/core';
 import { IconCheck } from '@tabler/icons';
-import { useRouter } from 'next/router';
+import { signIn } from 'next-auth/react';
 
 export function HeroBullets() {
+  const [session] = useSession();
   const { classes } = useStyles();
-  const router = useRouter();
+
+  console.log({ session });
+
   return (
     <div>
       <Container>
@@ -46,12 +50,7 @@ export function HeroBullets() {
               <List.Item>
                 Check your spelling and grammar in real-time as you write
               </List.Item>
-              <List.Item>
-                Get personalized suggestions for improving your language usage
-              </List.Item>
-              <List.Item>
-                Learn from your mistakes and build your skills over time
-              </List.Item>
+
               <List.Item>
                 Write with confidence and accuracy, no matter what {`you're`}{' '}
                 working on
@@ -64,27 +63,12 @@ export function HeroBullets() {
                 size="xl"
                 color="pink"
                 className={classes.control}
-                onClick={() => {
-                  // e.preventDefault();
-                  // chrome.tabs.query(
-                  //   { active: true, currentWindow: true },
-                  //   function (tabs) {
-                  //     var tab = tabs[0];
-                  //     chrome.tabs.update(tab.id, { url: '/docs/index.html' });
-                  //   }
-                  // );
-                  router.push(`/docs`);
+                onClick={(e) => {
+                  e.preventDefault();
+                  signIn('google');
                 }}
               >
                 Get started
-              </Button>
-              <Button
-                variant="default"
-                radius="xl"
-                size="xl"
-                className={classes.control}
-              >
-                Source code
               </Button>
             </Group>
           </div>

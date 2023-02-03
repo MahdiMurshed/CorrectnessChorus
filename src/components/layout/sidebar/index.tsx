@@ -2,6 +2,7 @@ import { data } from './data';
 import useStyles from './styles';
 import { Navbar, Group, Text } from '@mantine/core';
 import { IconLogout } from '@tabler/icons';
+import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
@@ -52,10 +53,16 @@ export default function SideBar() {
       </Navbar.Section>
 
       <Navbar.Section className={classes.footer}>
-        <Link href="/sign-in" className={classes.link}>
+        <div
+          onClick={async () => {
+            signOut();
+            router.push('/');
+          }}
+          className={classes.link}
+        >
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
-        </Link>
+        </div>
       </Navbar.Section>
     </Navbar>
   );

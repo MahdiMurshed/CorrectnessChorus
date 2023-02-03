@@ -8,6 +8,7 @@ const useStyles = createStyles((theme) => ({
     transition: 'transform 150ms ease, box-shadow 100ms ease',
     padding: theme.spacing.xl,
     paddingLeft: theme.spacing.xl * 2,
+    minWidth: '300px',
 
     '&:hover': {
       boxShadow: theme.shadows.md,
