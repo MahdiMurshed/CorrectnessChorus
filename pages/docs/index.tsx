@@ -19,14 +19,15 @@ const Documents = () => {
         <CenteredLoader />
       ) : (
         <ContainerWrapper>
-          <Col span={3}>
-            <Card title="New" description="Create new document" first />
-          </Col>
+          <Card title="New" description="Create new document" first />
 
           {docs.map((doc: Document) => (
-            <Col key={doc.id} span={3}>
-              <Card title={doc.text} description={doc.answer} id={doc.id} />
-            </Col>
+            <Card
+              key={doc.id}
+              title={doc.text}
+              description={doc.answer}
+              id={doc.id}
+            />
           ))}
         </ContainerWrapper>
       )}
