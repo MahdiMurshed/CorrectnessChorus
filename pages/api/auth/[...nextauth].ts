@@ -24,7 +24,7 @@ export const authOptions = {
           }
         : session,
 
-    async redirect({ url, baseUrl }) {
+    async redirect() {
       return `http://localhost:3000/docs`;
     },
   },
