@@ -1,5 +1,6 @@
 import image from './image.svg';
 import useStyles from './styles';
+import { useSession } from '@hooks/useUser';
 import {
   Image,
   Container,
@@ -11,19 +12,13 @@ import {
   ThemeIcon,
 } from '@mantine/core';
 import { IconCheck } from '@tabler/icons';
-import { signIn, useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
+import { signIn } from 'next-auth/react';
 
 export function HeroBullets() {
-  const { data: session } = useSession();
+  const [session] = useSession();
   const { classes } = useStyles();
-  const router = useRouter();
 
   console.log({ session });
-
-  if (session) {
-    router.push('/docs');
-  }
 
   return (
     <div>
@@ -73,7 +68,8 @@ export function HeroBullets() {
                 size="xl"
                 color="pink"
                 className={classes.control}
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   signIn('google');
                 }}
               >

@@ -8,24 +8,28 @@ import React from 'react';
 import ContainerWrapper from 'src/container';
 
 const Documents = () => {
-  const [session, loading] = useSession();
-  const { docs } = useDocs(session?.user?.id);
+  const [session] = useSession();
+  const { docs, loading } = useDocs(session?.user?.id);
   console.log({ docs });
 
-  if (!session || loading) return <CenteredLoader />;
+  if (!session) return <CenteredLoader />;
   return (
     <LayOut>
-      <ContainerWrapper>
-        <Col sm={6} md={4} lg={3}>
-          <Card title="New" description="Create new document" first />
-        </Col>
-
-        {docs.map((doc: Document) => (
-          <Col key={doc.id} sm={6} md={4} lg={3}>
-            <Card title={doc.text} description={doc.answer} id={doc.id} />
+      {loading ? (
+        <CenteredLoader />
+      ) : (
+        <ContainerWrapper>
+          <Col sm={6} md={4} lg={3}>
+            <Card title="New" description="Create new document" first />
           </Col>
-        ))}
-      </ContainerWrapper>
+
+          {docs.map((doc: Document) => (
+            <Col key={doc.id} sm={6} md={4} lg={3}>
+              <Card title={doc.text} description={doc.answer} id={doc.id} />
+            </Col>
+          ))}
+        </ContainerWrapper>
+      )}
     </LayOut>
   );
 };
@@ -36,7 +40,10 @@ export function CenteredLoader() {
   return (
     <Center
       style={{
-        height: '100vh',
+        position: 'absolute',
+        top: '50%',
+        left: '60%',
+        transform: 'translate(-50%, -50%)',
       }}
     >
       <Loader variant="dots" />

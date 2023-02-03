@@ -23,6 +23,10 @@ export const authOptions = {
             },
           }
         : session,
+
+    async redirect({ url, baseUrl }) {
+      return `http://localhost:3000/docs`;
+    },
   },
 };
 export default NextAuth(authOptions);
