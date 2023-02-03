@@ -17,10 +17,17 @@ export default async function handler(
 
   switch (method) {
     case METHODS.GET: {
-      return res.status(200).json({});
+      const { userId } = req.query as { userId: string };
+      console.log({ userId: req.query });
+      const docs = await prisma.document.findMany({
+        where: {
+          userId,
+        },
+      });
+      return res.status(200).json({ docs });
     }
     case METHODS.POST: {
-      const { message, answer } = req.body;
+      const { message, answer, userId } = req.body;
       // const url = `http://127.0.0.1:5000/members?text="${message}"`;
 
       // const response = await axios.post(url);
@@ -28,6 +35,7 @@ export default async function handler(
         data: {
           text: message,
           answer,
+          userId,
         },
       });
       return res.status(201).json({ doc });

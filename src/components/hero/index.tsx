@@ -11,11 +11,20 @@ import {
   ThemeIcon,
 } from '@mantine/core';
 import { IconCheck } from '@tabler/icons';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
 export function HeroBullets() {
+  const { data: session } = useSession();
   const { classes } = useStyles();
   const router = useRouter();
+
+  console.log({ session });
+
+  if (session) {
+    router.push('/docs');
+  }
+
   return (
     <div>
       <Container>
@@ -65,26 +74,10 @@ export function HeroBullets() {
                 color="pink"
                 className={classes.control}
                 onClick={() => {
-                  // e.preventDefault();
-                  // chrome.tabs.query(
-                  //   { active: true, currentWindow: true },
-                  //   function (tabs) {
-                  //     var tab = tabs[0];
-                  //     chrome.tabs.update(tab.id, { url: '/docs/index.html' });
-                  //   }
-                  // );
-                  router.push(`/docs`);
+                  signIn('google');
                 }}
               >
                 Get started
-              </Button>
-              <Button
-                variant="default"
-                radius="xl"
-                size="xl"
-                className={classes.control}
-              >
-                Source code
               </Button>
             </Group>
           </div>

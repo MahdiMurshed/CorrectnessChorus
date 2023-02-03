@@ -12,12 +12,7 @@ interface CardGradientProps {
   description: string;
 }
 
-export default function Card({
-  title,
-  description,
-  first,
-  id,
-}: CardGradientProps) {
+export default function Card({ title, description, first }: CardGradientProps) {
   const { classes } = useStyles();
   const router = useRouter();
 
@@ -29,7 +24,7 @@ export default function Card({
   };
   const handleClick = (e: any) => {
     e.preventDefault();
-    router.push(`/docs/${id}`);
+    // router.push(`/docs/${id}`);
   };
 
   return (

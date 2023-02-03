@@ -1,8 +1,10 @@
+import { useSession } from '@hooks/useUser';
 import axios from '@lib/axios';
 import { Button, Text, Textarea } from '@mantine/core';
+import { Document } from '@prisma/client';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
-import React, { useReducer } from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { toast } from 'react-toastify';
 import { initialState, reducer } from '~popup';
 
@@ -12,21 +14,73 @@ const NewDocument = () => {
   const { id } = router.query;
   const [state, dispatch] = useReducer(reducer, initialState);
   const { data, ans, loading } = state;
+  const [session] = useSession();
+  const queryClient = useQueryClient();
+  console.log({ session });
+  const userId = session?.user?.id;
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        await axios.post('/save-doc', {
-          message: data,
-          answer: ans,
-        });
-      } catch (e) {
-        console.log(e);
-      }
+    if (ans !== '') {
+      addTodoMutation.mutate({ data, ans, userId });
     }
-    fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ans]);
+  }, [ans, session?.user?.id]);
+
+  const addTodoMutation = useMutation({
+    mutationFn: (newText) =>
+      axios.post('/docs', {
+        message: newText.data,
+        answer: newText.ans,
+        userId: newText.userId,
+      }),
+    // When mutate is called:
+    onMutate: async (newTodo: any) => {
+      // Cancel any outgoing refetches
+      // (so they don't overwrite our optimistic update)
+      await queryClient.cancelQueries({
+        queryKey: ['docs', userId],
+      });
+
+      // Snapshot the previous value
+      const previousTodos = queryClient.getQueryData<Document[]>([
+        'docs',
+        userId,
+      ]);
+
+      // Optimistically update to the new value
+      if (previousTodos) {
+        queryClient.setQueryData<Document[]>(
+          ['docs', userId],
+          [
+            ...previousTodos,
+            {
+              text: newTodo.data,
+              answer: newTodo.ans,
+              userId: newTodo.userId,
+              id: Math.random().toString(),
+              createdAt: new Date(),
+            },
+          ]
+        );
+      }
+
+      return { previousTodos };
+    },
+    // If the mutation fails,
+    // use the context returned from onMutate to roll back
+    onError: (err, variables, context) => {
+      if (context?.previousTodos) {
+        queryClient.setQueryData<Document[]>(
+          ['docs', userId],
+          context.previousTodos
+        );
+      }
+    },
+    // Always refetch after error or success:
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['docs', userId] });
+    },
+  });
 
   const handleSubmit = async (e: any) => {
     dispatch({ type: 'SET_LOADING', payload: true });

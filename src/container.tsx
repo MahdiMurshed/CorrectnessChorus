@@ -1,8 +1,8 @@
-import { Container } from '@mantine/core';
+import { Grid } from '@mantine/core';
 import React from 'react';
 
 const ContainerWrapper = ({ children }: React.PropsWithChildren) => {
-  return <Container py="lg">{children}</Container>;
+  return <Grid py="lg">{children}</Grid>;
 };
 
 export default ContainerWrapper;

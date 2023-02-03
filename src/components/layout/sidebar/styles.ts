@@ -4,7 +4,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
   const icon = getRef('icon');
   return {
     navbar: {
-      //   positio n: 'fixed',
+      overflow: 'hidden',
       backgroundColor: theme.fn.variant({
         variant: 'filled',
         color: 'dark',
