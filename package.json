@@ -8,6 +8,7 @@
     "dev": "plasmo dev",
     "web": "next dev",
     "build": "plasmo build",
+    "build-web": "next build",
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write .",

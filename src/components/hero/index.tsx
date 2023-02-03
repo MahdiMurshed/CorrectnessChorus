@@ -50,12 +50,7 @@ export function HeroBullets() {
               <List.Item>
                 Check your spelling and grammar in real-time as you write
               </List.Item>
-              <List.Item>
-                Get personalized suggestions for improving your language usage
-              </List.Item>
-              <List.Item>
-                Learn from your mistakes and build your skills over time
-              </List.Item>
+
               <List.Item>
                 Write with confidence and accuracy, no matter what {`you're`}{' '}
                 working on

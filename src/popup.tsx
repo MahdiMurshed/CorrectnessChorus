@@ -66,7 +66,7 @@ function IndexPopup() {
       }}
     >
       <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>
-        Paste a sentence
+        Correctness-Chorus
       </h2>
       <Textarea
         style={{
