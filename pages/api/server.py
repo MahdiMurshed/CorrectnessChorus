@@ -13,7 +13,7 @@ args = TTSettings(num_beams=5, min_length=1)
 def ReturnJSON():
     raw_text = request.args.get('text')
     print(raw_text)
-    result = happy_tt.generate_text("grammar: "+raw_text)
+    result = happy_tt.generate_text("grammar: "+raw_text, args=args)
     print(result)
     # corrector(raw_text)
     data = jsonify(result)
