@@ -2,7 +2,7 @@ import json
 from flask import Flask,jsonify,request
 import os
 from dotenv import load_dotenv
-load_dotenv()  # this will load variables from .env.
+load_dotenv()  # this will load variables from .env.Hello
 # from transformers import pipeline
 from happytransformer import HappyTextToText, TTSettings
 from flask_cors import CORS, cross_origin

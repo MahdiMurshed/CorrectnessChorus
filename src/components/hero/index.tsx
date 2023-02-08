@@ -68,7 +68,7 @@ export function HeroBullets() {
                   signIn('google');
                 }}
               >
-                Get started
+                Login with google
               </Button>
             </Group>
           </div>
