@@ -87,10 +87,12 @@ const NewDocument = () => {
     e.preventDefault();
 
     try {
-      const url = `http://127.0.0.1:5000/members?text="${data}"`;
+      const url = `http://127.0.0.1:5000/members?text=${data}`;
       console.log({ url });
       const response = await axios.post(url);
-      const answer = response.data.text;
+      console.log({ response });
+      let answer = '';
+      response.data.map((dt) => (answer += dt.text));
 
       dispatch({ type: 'SET_ANS', payload: answer });
       toast.success('Got correction');

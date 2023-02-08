@@ -42,7 +42,9 @@ function IndexPopup() {
       console.log({ url });
       const response = await axios.post(url);
       console.log({ response });
-      const answer = response.data.text;
+      let answer = '';
+      response.data.map((dt) => (answer += dt.text));
+
       dispatch({ type: 'SET_ANS', payload: answer });
       toast.success('Got correction');
     } catch (error) {

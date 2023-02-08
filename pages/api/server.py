@@ -6,6 +6,9 @@ load_dotenv()  # this will load variables from .env.Hello
 # from transformers import pipeline
 from happytransformer import HappyTextToText, TTSettings
 from flask_cors import CORS, cross_origin
+import nltk
+nltk.download('punkt')
+from nltk.tokenize import sent_tokenize
 app =   Flask(__name__)
 CORS(app)
 # corrector = pipeline('text2text-generation','pszemraj/flan-t5-large-grammar-synthesis',)
@@ -15,8 +18,12 @@ args = TTSettings(num_beams=5, min_length=1)
 @cross_origin()
 def ReturnJSON():
     raw_text = request.args.get('text')
+    text_arr = sent_tokenize(raw_text)
+    result = []
+    for i in text_arr:
+        print(i)
+        result.append(happy_tt.generate_text("grammar: "+i, args=args))
     print(raw_text)
-    result = happy_tt.generate_text("grammar: "+raw_text, args=args)
     print(result)
     # corrector(raw_text)
     data = jsonify(result)
